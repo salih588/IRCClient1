@@ -11,7 +11,9 @@ public class Client implements Runnable{
 	@Override
 	public void run() {
 		
-		
+		Scanner s = new Scanner(System.in);
+		String msg = s.nextLine();
+		System.out.println("Client said: "+msg);
 	}
 	
 	
