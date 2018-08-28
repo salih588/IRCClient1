@@ -30,8 +30,6 @@ public class Home {
 				System.out.print("enter your real name?");
 				realName = s.nextLine();
 				
-				System.out.print("enter message");
-				message = s.nextLine();
 				
 				Socket socket = new Socket("chat.freenode.net",6667);
 				out = new PrintWriter(socket.getOutputStream(),true);
@@ -39,7 +37,7 @@ public class Home {
 				
 				write("Nick ", nick);
 				write("USER ",userName+" 0 * :"+realName);
-				write("Message ",message);
+				w
 				
 				while(in.hasNext()){
 					String serverMessage = in.nextLine();
