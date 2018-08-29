@@ -35,9 +35,10 @@ public class Home {
 				out = new PrintWriter(socket.getOutputStream(),true);
 				in = new Scanner(socket.getInputStream());
 				
-				write("Nick ", nick);
+				write("NICK ", nick);
 				write("USER ",userName+" 0 * :"+realName);
-				w
+				write("JOIN","#freenode");
+				
 				
 				while(in.hasNext()){
 					String serverMessage = in.nextLine();
