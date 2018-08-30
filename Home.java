@@ -32,24 +32,13 @@ public class Home {
 				
 				
 				Socket socket = new Socket("chat.freenode.net",6667);
-				out = new PrintWriter(socket.getOutputStream(),true);
-				in = new Scanner(socket.getInputStream());
 				
-				write("NICK ", nick);
-				write("USER ",userName+" 0 * :"+realName);
-				write("JOIN","#freenode");
+				Client client = new Client(socket,nick,userName,realName);
 				
+				Thread thread = new Thread(client);
+				thread.start();
 				
-				while(in.hasNext()){
-					String serverMessage = in.nextLine();
-					System.out.println("<<< "+serverMessage);
-				}
-				
-				in.close();
-				out.close();
-				socket.close();
-				
-				System.out.println("Done");
+			
 				
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
@@ -61,11 +50,5 @@ public class Home {
 			
 		}
 	
-	private static void write(String command,String message){
-		String fulMessage = command+" "+message;
-		System.out.println(">>> "+fulMessage);
-		out.print(fulMessage+"\r\n");
-		out.flush();
-		
-	}
+	
 }
